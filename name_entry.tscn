@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://6835np11gl3l"]
+
+[ext_resource type="FontFile" uid="uid://c0jwry7hgh1pa" path="res://fonts/Xolonium-Regular.ttf" id="1_i8e6g"]
+[ext_resource type="Script" path="res://nameEntry.gd" id="2_oy38f"]
+
+[sub_resource type="Theme" id="Theme_ahnjv"]
+default_font = ExtResource("1_i8e6g")
+default_font_size = 64
+
+[node name="NameEntry" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ahnjv")
+script = ExtResource("2_oy38f")
+
+[node name="Title" type="Label" parent="."]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 182.0
+grow_horizontal = 2
+text = "New High Score!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Name" type="TextEdit" parent="."]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "AAA"
+context_menu_enabled = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+caret_type = 1
+caret_blink = true
+caret_blink_interval = 0.4
+caret_multiple = false
+
+[node name="Submit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -122.5
+offset_top = -106.0
+offset_right = 122.5
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Submit"
+
+[connection signal="pressed" from="Submit" to="." method="_on_submit_pressed"]

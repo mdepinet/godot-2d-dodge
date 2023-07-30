@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqr6v8mbcacxs"]
+
+[ext_resource type="FontFile" uid="uid://c0jwry7hgh1pa" path="res://fonts/Xolonium-Regular.ttf" id="1_o38pq"]
+[ext_resource type="Script" path="res://leaderboard.gd" id="1_wm20i"]
+
+[sub_resource type="Theme" id="Theme_wh1hs"]
+default_font = ExtResource("1_o38pq")
+default_font_size = 48
+
+[node name="Leaderboard" type="CanvasLayer"]
+script = ExtResource("1_wm20i")
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -213.0
+offset_top = 20.0
+offset_right = 213.0
+offset_bottom = 101.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_o38pq")
+theme_override_font_sizes/font_size = 64
+text = "Leaderboard"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -592.0
+offset_right = 240.0
+offset_bottom = -142.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_wh1hs")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -87.0
+offset_top = -106.0
+offset_right = 87.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_o38pq")
+theme_override_font_sizes/font_size = 64
+text = "Back"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

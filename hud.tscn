@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://74d30u16nlok"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_74t0h"]
+[ext_resource type="FontFile" uid="uid://c0jwry7hgh1pa" path="res://fonts/Xolonium-Regular.ttf" id="2_svhok"]
+[ext_resource type="PackedScene" uid="uid://bqr6v8mbcacxs" path="res://leaderboard.tscn" id="3_e3e6l"]
+[ext_resource type="PackedScene" uid="uid://6835np11gl3l" path="res://name_entry.tscn" id="4_0es4i"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_ql63v"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_k08mj"]
+events = [SubResource("InputEventAction_ql63v")]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_74t0h")
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -22.5
+offset_right = 22.5
+offset_bottom = 81.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_svhok")
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -121.5
+offset_right = 240.0
+offset_bottom = 121.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_svhok")
+theme_override_font_sizes/font_size = 64
+text = "Dodge the creeps!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -140.0
+offset_right = 100.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_svhok")
+theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_k08mj")
+text = "Start"
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Leaderboard" parent="." instance=ExtResource("3_e3e6l")]
+
+[node name="NameEntry" parent="." instance=ExtResource("4_0es4i")]
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
+[connection signal="leaderboard_closed" from="Leaderboard" to="." method="_on_leaderboard_closed"]
+[connection signal="name_submitted" from="NameEntry" to="." method="_on_name_submitted"]
