@@ -17,21 +17,21 @@ func _init():
 		scores.append(line)
 
 func is_high_score(score):
-	return scores.is_empty() or score > int(scores[-1][1])
+	return score > 0 and (scores.size() < MAX_SCORES or score > int(scores[-1][1]))
 
 func add_score(name, score):
 	if not is_high_score(score):
 		return
 	var array = PackedStringArray([name, str(score)])
-	if scores.is_empty():
-		scores.append(array)
-	else:
+	if score > int(scores[-1][1]):
 		for i in range(min(scores.size(), MAX_SCORES)):
 			if score > int(scores[i][1]):
 				scores.insert(i, array)
 				break
-		if (scores.size() > MAX_SCORES):
-			scores.resize(MAX_SCORES)
+	else:
+		scores.append(array)
+	if (scores.size() > MAX_SCORES):
+		scores.resize(MAX_SCORES)
 	render()
 	persist_leaderboard()
 	

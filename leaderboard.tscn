@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqr6v8mbcacxs"]
+[gd_scene load_steps=6 format=3 uid="uid://bqr6v8mbcacxs"]
 
 [ext_resource type="FontFile" uid="uid://c0jwry7hgh1pa" path="res://fonts/Xolonium-Regular.ttf" id="1_o38pq"]
 [ext_resource type="Script" path="res://leaderboard.gd" id="1_wm20i"]
@@ -6,6 +6,12 @@
 [sub_resource type="Theme" id="Theme_wh1hs"]
 default_font = ExtResource("1_o38pq")
 default_font_size = 48
+
+[sub_resource type="InputEventAction" id="InputEventAction_mmshp"]
+action = &"enter"
+
+[sub_resource type="Shortcut" id="Shortcut_u1uv1"]
+events = [SubResource("InputEventAction_mmshp")]
 
 [node name="Leaderboard" type="CanvasLayer"]
 script = ExtResource("1_wm20i")
@@ -59,6 +65,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_o38pq")
 theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_u1uv1")
 text = "Back"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

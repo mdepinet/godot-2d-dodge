@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://6835np11gl3l" path="res://name_entry.tscn" id="4_0es4i"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_ql63v"]
-action = &"start_game"
+action = &"enter"
 
 [sub_resource type="Shortcut" id="Shortcut_k08mj"]
 events = [SubResource("InputEventAction_ql63v")]
