@@ -3,6 +3,7 @@ extends CanvasLayer
 signal leaderboard_closed
 
 var LEADERBOARD_FILE = "user://leaderboard.txt"
+var MAX_SCORES = 6
 
 var scores = []
 
@@ -25,11 +26,12 @@ func add_score(name, score):
 	if scores.is_empty():
 		scores.append(array)
 	else:
-		for i in range(min(scores.size(), 10)):
+		for i in range(min(scores.size(), MAX_SCORES)):
 			if score > int(scores[i][1]):
 				scores.insert(i, array)
-		if (scores.size() > 10):
-			scores.resize(10)
+				break
+		if (scores.size() > MAX_SCORES):
+			scores.resize(MAX_SCORES)
 	render()
 	persist_leaderboard()
 	

@@ -25,6 +25,7 @@ func show_game_over():
 	if $Leaderboard.is_high_score(score):
 		$ScoreLabel.hide()
 		$NameEntry.show()
+		$NameEntry/Name.grab_focus()
 	else:
 		show_initial_state()
 
